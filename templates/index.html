@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Power Calculator</title>
+</head>
+<body>
+    <h1>Power Calculator</h1>
+    <p>Enter a number to calculate its square, cube, and fifth power.</p>
+
+    <form method="POST">
+        <label for="number">Enter an integer:</label>
+        <input type="number" id="number" name="number" value="{{ result.get('number', 1) }}" step="1" required>
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if result %}
+        {% if result.error %}
+            <p style="color: red;">{{ result.error }}</p>
+        {% else %}
+            <p>Square of {{ result.number }} is {{ result.square }}</p>
+            <p>Cube of {{ result.number }} is {{ result.cube }}</p>
+            <p>Fifth power of {{ result.number }} is {{ result.fifth_power }}</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
